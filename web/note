@@ -1,0 +1,73 @@
+1.基本的绘图方法
+fillText(text, x, y)   绘制文本
+arc(x,y,r,start,end,anticlockwise)   绘制圆形、圆弧
+clearRect(left, top, width, height)    清除部分绘制内容
+lineTo(x,y)    绘制直线
+moveTo（x, y)    绘制直线
+fill()    填充多边形内部
+stroke()    绘制多边形边线
+beginPath()    开始定义多边形
+setInterval(Function, interval, args:Array)    设置自动调用的计时器
+measureText(text).width    检测文本的宽度
+
+绘图步骤
+1.使用beginPath()方法创建多边形
+2.使用绘制图形命令定义多边形的边
+3.使用stroke()或者fill()方法来绘制多边形的边或者填充多边形内部区域
+
+事件处理和简单图像绘制
+鼠标事件
+坐标转换
+键盘事件
+事件拦截
+简单图像绘制
+
+鼠标事件
+onmousedown 按下
+onmouseup 释放
+onmousemove 移动
+onmouseenter 进入
+onmouseleave 离开
+onmousewheel 滚动
+
+canvas.addEventListener(event:string, Function)
+注册事件监听器，当发生相应的事件后会回调相应的函数
+
+2.坐标转换：与分辨率无关的坐标转换，将位置转换成在绘图表面的位置
+getLocation(x,y)
+####
+HTMLCanvasElement.prototype.getLocation=function(x,y){
+    var bbox = this.getBoundingClientRect();
+    return{
+        x:(x-bbox.left)*(canvas.width/bbox.width),
+        y:(y-bbox.top)*(canvas.width/bbox.width)
+    }
+}
+####
+
+3.键盘事件
+onkeydown
+onkeyup
+onkeypress
+onkeypress 在onkeyup之前发生，并且按键是可打印字符
+
+4.事件拦截
+Event.preventDefault() 将阻止浏览器进行发生默认的行为
+禁止右键弹出菜单
+####
+window.oncontextmenu=function(e){
+    e.preventDefault();
+}
+####
+禁止选择文本
+####
+window.onselectstart=function(e){
+    e.preventDefault();
+}
+####
+在用户关闭网页之前给予提醒
+####
+window.onbeforeunload=function(e){
+    e.preventDefault();
+}
+####
